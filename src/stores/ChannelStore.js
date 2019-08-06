@@ -179,17 +179,26 @@ export default class ChannelStore {
   sendNotification (entry) {
     const {
       sessionStore: {
-        rootStore: { uiStore: currentChannelName }
+        rootStore: {
+          uiStore: { currentChannelName }
+        }
       }
     } = this.network
-    const payload = entry.payload.value
+
+    const {
+      content,
+      meta: {
+        from: { name }
+      }
+    } = entry.payload.value
+
     if (document.hidden || this.channelName !== currentChannelName) {
       if (this.unreadMessages.length > 1) {
         notify(`${this.unreadMessages.length} unread messages in #${this.channelName}`, '')
       } else {
         notify(
           `New message in #${this.channelName}`,
-          `${payload.meta.from.name}: ${payload.content}`
+          `${typeof name === 'string' ? name : name.id}: ${content}`
         )
       }
     }

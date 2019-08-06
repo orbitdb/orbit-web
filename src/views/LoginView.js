@@ -92,6 +92,8 @@ class LoginView extends React.Component {
           theme={{ ...uiStore.theme }}
           onSubmit={this.onLogin}
           setUsernameInputRef={ref => (this.usernameInputRef = ref)}
+          enableMetamask={() => sessionStore.enableMetamask()}
+          metamaskEnabled={sessionStore.metamask}
         />
         <div className="Version">
           {t('version')}: {version}

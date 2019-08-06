@@ -26,7 +26,7 @@
   },
   "disclaimer": {
     "alpha": {
-      "content": "Tämä on ohjelman alpha versio. Asiat muuttuvat ja menevät rikki \u2014 keskustelut häviävät. Käytä omalla vastuulla."
+      "content": "Tämä on ohjelman alpha-versio. Asiat muuttuvat ja menevät rikki \u2014 keskustelut häviävät. Käytä omalla vastuulla."
     }
   },
   "joinChannel": {
@@ -35,9 +35,15 @@
   "login": {
     "nickname": "Nimimerkki",
     "orLoginWith": "Tai kirjaudu käyttäen",
-    "pressEnterToLogin": "Paina ENTER kirjautuaksesi"
+    "pressEnterToLogin": "Paina ENTER kirjautuaksesi",
+    "metamask": {
+      "disabled": "Kirjaudu sisään Metamaskilla",
+      "enabled": "Sulje Metamask-yhteys",
+      "info": "Liitä luotu OrbitDB-tunnus Ethereum-tiliisi allekirjoittamalla viesti."
+    }
   },
   "loading": "Ladataan",
+  "or": "tai",
   "settings": {
     "names": {
       "themeName": "Teema",

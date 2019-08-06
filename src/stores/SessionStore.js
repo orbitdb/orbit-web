@@ -15,6 +15,10 @@ export default class SessionStore {
   constructor (rootStore) {
     this.rootStore = rootStore
 
+    if (window.ethereum && window.ethereum.enabled) {
+      this.enableMetamask()
+    }
+
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
   }
@@ -23,6 +27,9 @@ export default class SessionStore {
 
   @observable
   _user = null
+
+  @observable
+  _metamask = false
 
   // Public instance variable getters
 
@@ -37,6 +44,15 @@ export default class SessionStore {
     return !!(this._user && this._user.username)
   }
 
+  @computed
+  get metamask () {
+    return this._metamask
+  }
+
+  set metamask (val) {
+    this._metamask = val
+  }
+
   // Private instance actions
 
   // Async so the API is consistend if async is needed in the future
@@ -47,6 +63,19 @@ export default class SessionStore {
       this._user = user
     })
     this._cacheUser(user)
+  }
+
+  @action.bound
+  enableMetamask () {
+    if (window.ethereum) {
+      try {
+        window.ethereum.enable().then(() => {
+          this.metamask = true
+        })
+      } catch (error) {
+        this.metamask = false
+      }
+    }
   }
 
   // Private instance methods
